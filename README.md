@@ -10,3 +10,6 @@ Pasos para desplegar api:
 
 Colección de POSTMAN para ejecutar los endpoints requeridos:
 https://api.postman.com/collections/4369576-75e9e3fd-87b1-4a7a-a285-776d0a303368?access_key=PMAT-01GRTETHBFQF23PN9B67Z96SR3
+
+Nota: De igual forma se agrega .json al repo para descargar la colección utilizada con los endpoints requeridos.
+      El código fuente se encuentra en la carpeta "java-spring-prueba".
