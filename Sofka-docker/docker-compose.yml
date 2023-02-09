@@ -1,0 +1,17 @@
+version: '3'
+services:
+    postgres:
+        image: postgres
+        container_name: postgres-sofka
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: sofka
+    sofka:
+        image: sofka-prueba
+        container_name: sofka-prueba
+        ports:
+            - "8082:8082"
+        links:
+            - postgres:postgres-sofka
