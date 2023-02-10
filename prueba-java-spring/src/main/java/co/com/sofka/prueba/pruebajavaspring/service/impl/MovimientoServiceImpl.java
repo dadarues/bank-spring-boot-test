@@ -9,6 +9,8 @@ import co.com.sofka.prueba.pruebajavaspring.service.MovimientosService;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -50,12 +52,12 @@ public class MovimientoServiceImpl implements MovimientosService {
   public Movimientos save(Movimientos entity) throws Exception {
     this.validate(entity);
     Cuenta cuenta = cuentaService.findById(entity.getCuenta().getIdCuenta()).get();
-    Double saldoCuenta = cuenta
+    BigDecimal saldoCuenta = cuenta
         .getSaldoActual();
 
-    Double movimiento = saldoCuenta + entity.getValor();
+    BigDecimal movimiento = saldoCuenta.add(entity.getValor());
 
-    if(saldoCuenta == 0 || movimiento <= 0) {
+    if(saldoCuenta.doubleValue() == 0 || movimiento.doubleValue() <= 0) {
       throw new Exception("Saldo no disponible");
     }
 
